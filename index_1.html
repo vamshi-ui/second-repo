@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Potta+One&family=Roboto:wght@100&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="prism.css">
+    <script src="prism.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>HTML Cheatsheet by CodeWithHarry</title>
+</head>
+
+<body>
+    <nav>
+        <span class="logo"><img src="copy.png" alt=""></span>
+        <div class="content center">
+            This HTML Cheatsheet is For You!
+        </div>
+    </nav>
+    <div class="container">
+        <ol>
+            <li><b>HTML Boilerplate:</b> This is the basic html boilerplate code
+                <pre class="language-html"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    
+&lt;/body&gt;
+&lt;/html&gt; </code></pre>
+            </li>
+            <li><b>Reactive Forms-1</b> validation-angular
+                <pre class="language-js"><code>&lt;div class="box"&gt;
+                    &lt;h2&gt;Login Register&lt;/h2&gt;
+                    
+                    &lt;form [formGroup]="registrationForm"&gt;
+                        &lt;div class="row"&gt;
+                             &lt;div class="col-6"&gt;
+                                &lt;div class="form-group inputBox"&gt;
+                                    &lt;input [class.is-invalid]="userName.invalid &&  userName.touched" type="text" formControlName="userName"class="form-control" required=""&gt;
+                                    &lt;label&gt; Username: &lt;/label&gt;
+                                    &lt;div *ngIf="userName.invalid && userName.touched"&gt;
+                                        &lt;small class="text-danger" *ngIf="userName.errors?.required"&gt; Username is Required&lt;/small&gt;
+                                        &lt;small class="text-danger" *ngIf="userName.errors?.minlength"&gt; Username must be atleast 3 characters&lt;/small&gt;
+                                        &lt;small class="text-danger" *ngIf="userName.errors?.forbiddenName"&gt; {{userName.errors?.forbiddenName.value}} - Username is NOT ALLOWED&lt;/small&gt;
+                                   &lt;/div&gt;
+                                &lt;/div&gt;
+                                
+                
+                                &lt;div class="from-group inputBox"&gt; 
+                                        
+                                        &lt;input [class.is-invalid] ="email.invalid && email.touched" type="email" formControlName="email" class="form-control" 
+                                        &gt;
+                                        &lt;label&gt;E-Mail:  &lt;/label&gt;
+                                        &lt;button (click)="addAlternateEmail()" type="button" class="btn btn-primary btn-sm m-2"&gt;Add Another Email&lt;/button&gt;
+                                        &lt;small class="text-danger" 
+                                        [class.d-none]="email.valid || email.untouched"&gt;Email is Required &lt;/small&gt;
+                                        &lt;div formArrayName="alternateEmails" *ngFor="let email of alternateEmails.controls; let i = index"&gt; 
+                                            &lt;input type="text" class="form-control my-1" [formControlName]="i"&gt;
+                                        &lt;/div&gt;
+                                       
+                                &lt;/div&gt;
+                                &lt;div class="form-check"&gt;
+                                    &lt;input type="checkbox" formControlName="subscribe" 
+                                    class="form-check-input" required=""&gt;
+                                    &lt;label style="color: #fff"&gt; Subscribe me. &lt;/label&gt;
+                
+                                &lt;/div&gt;
+                
+                                &lt;div class="form-group inputBox"&gt;
+                                
+                                    &lt;input type="password" formControlName="password" class="form-control" required=""&gt;
+                                    &lt;label&gt; Password: &lt;/label&gt;
+                                &lt;/div&gt;
+                
+                                &lt;div class="form-group inputBox"&gt;
+                                    &lt;input [class.is-invalid] = "registrationForm.errors?.misMatch"  type="password" formControlName="confirmPassword" class="form-control" required=""&gt;
+                                    &lt;label&gt; Confirm Password: &lt;/label&gt;
+                                    &lt;small class="text-danger" 
+                                    *ngIf="registrationForm.errors?.misMatch"&gt;Passwords do not Match&lt;/small&gt;
+                                &lt;/div&gt;
+                
+                
+                            &lt;/div&gt;
+                        &lt;div class="col-6"&gt;
+                            &lt;div formGroupName="address"&gt;
+                            &lt;div class="form-group inputBox"&gt;
+                                &lt;input type="text" formControlName="city"class="form-control" required=""&gt;
+                                &lt;label&gt; City: &lt;/label&gt;
+                            &lt;/div&gt;
+                            &lt;div class="form-group inputBox"&gt;
+                                &lt;input type="text" formControlName="state"class="form-control" required=""&gt;
+                                &lt;label&gt; State: &lt;/label&gt;
+                            &lt;/div&gt;
+                            &lt;div class="form-group inputBox"&gt;
+                                &lt;input type="text" formControlName="pincode" class="form-control" required=""&gt;
+                                &lt;label&gt; Pincode: &lt;/label&gt;
+                            &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                                &lt;input type="submit" name="submit" value="Register"&gt;
+                                &lt;input (click)="displayValues()" type="button" name="Display" value="Display"  &gt;
+                        &lt;/div&gt;
+                    &lt;/form&gt;
+                    
+                        &lt;div class="MyValues"&gt;
+                        {{registrationForm.value | json}}
+                        &lt;/div&gt;
+                &lt;/div&gt; </code></pre>
+            </li>
+            <li><b>Reactive Forms-2</b> TS-FILE
+                <pre class="language-js"><code>import { Component, OnInit } from '@angular/core';
+                    import {FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+                    import {nameValidator} from '../shared/user-name.validator'
+                    import {PasswordValidator} from '../shared/password.validator';
+                    
+                    
+                    
+                    @Component({
+                      selector: 'app-reactive-forms',
+                      templateUrl: './reactive-forms.component.html',
+                      styleUrls: ['./reactive-forms.component.css']
+                    })
+                    export class ReactiveFormsComponent implements OnInit {
+                      registrationForm: FormGroup;
+                      /*
+                     registrationFrom = new FormGroup({
+                       userName : new FormControl(''),
+                       password : new FormControl(''),
+                       confirmPassword: new FormControl(''),
+                       address: new FormGroup({
+                         city: new FormControl(''),
+                         state: new FormControl(''),
+                         pincode: new FormControl('')
+                       })
+                     });
+                     */
+                      
+                      constructor(private _myFB: FormBuilder) { }
+                      
+                    
+                    
+                      ngOnInit() {
+                        this.registrationForm = this._myFB.group({
+                          userName: ['',[Validators.required,Validators.minLength(3),nameValidator(/password/),nameValidator(/admin/), nameValidator(/rsk/)]],
+                          email: [''],
+                          subscribe: [false],
+                          password: [''],
+                          confirmPassword: [''],
+                          address: this._myFB.group({
+                            city: [''],
+                            state: [''],
+                            pincode: ['']
+                          }), alternateEmails: this._myFB.array([])
+                        }, {validator: PasswordValidator});
+                    
+                        this.registrationForm.get('subscribe').valueChanges
+                        .subscribe(checkedValue =>
+                          {
+                            const email = this.registrationForm.get('email');
+                            if(checkedValue){
+                              email.setValidators(Validators.required);
+                            }
+                            else{
+                              email.clearValidators;
+                            }
+                            email.updateValueAndValidity();
+                          });
+                      }
+                      get userName(){
+                        return this.registrationForm.get('userName');
+                        }
+                      get email(){
+                        return this.registrationForm.get('email');
+                      }
+                      get alternateEmails(){
+                        return this.registrationForm.get('alternateEmails') as FormArray;
+                      }
+                      addAlternateEmail(){
+                        this.alternateEmails.push(this._myFB.control(''));
+                      }
+                      displayValues(){
+                        this.registrationForm.patchValue({
+                          userName: 'testUser',
+                         
+                          address: {
+                            city: 'testCity',
+                            state: 'testState'
+                           
+                          }
+                        });
+                      }
+                    }
+                    </code></pre>
+            </li>
+            <li><b>Reactive Forms-3</b> password validation-angular
+                <pre class="language-js"><code>import {AbstractControl} from '@angular/forms';
+                    export function PasswordValidator (control: AbstractControl): {[key: string]: boolean} | null{
+                    
+                    const password = control.get('password');
+                    const confirmPassword = control.get('confirmPassword');
+                    if(password.pristine || confirmPassword.pristine){
+                        return null;
+                    }
+                    return password && confirmPassword && password.value != confirmPassword.value ?
+                    {'misMatch': true} : null;
+                    
+                    }</code></pre>
+            </li>
+            <li><b>Reactive Forms-4:</b> username validation-angular
+                <pre class="language-js"><code>import { AbstractControl, ValidatorFn } from "@angular/forms";
+
+
+
+                    export function nameValidator(forbiddenName: RegExp):ValidatorFn{
+                       return (control: AbstractControl):{[key: string]: any} | null => {
+                            const forbidden = forbiddenName.test(control.value);
+                            return forbidden ? {'forbiddenName': {value: control.value}} : null;
+                        };
+                    
+                    } </code></pre>
+            </li>
+            <li><b>Angular:</b> Installation
+                <pre class="language-js"><code>Angular:
+                    ..........
+                    Features:
+                    ...........
+                    -&gt;  Cross-Platform
+                    -&gt;  High Speed & Optimum Performance
+                    -&gt;  Angular Applications for Everyone 
+                    -&gt;  Less Code
+                    -&gt;  Dependency Injection
+                    -&gt;  Lazy Loading
+                    -&gt;  Angular CLI (Command Line Interface)
+                        --&gt;Command line tools: start building fast, add components and tests, then instantly        deploy.
+                    -&gt;  Directives
+                    -&gt;. Angular now integrated with default Ivy compiler(New Rendering Engine)
+                       - Faster mobile apps
+                       - Better debugging
+                       - Improved Type Checking
+                       - Faster Testing
+                       - Improved build errors 
+                       - Enable the AOT(Angular ahead-of-time) compiler by default
+                    -&gt;  Single Page Application
+                    -&gt; Angular supports typescript
+                    -&gt; Module with Providers support
+                    -&gt; Angular Forms
+                    -&gt; Dependency Injection
+                    -&gt; API Extractor
+                    -&gt; MVC Architecture
+                    -&gt; Angular Components
+                    -&gt; Efficient Two-Way Data Binding 
+                    
+                    Prerequisites :
+                    1. HTML
+                    2. CSS
+                    3. JavaScript 
+                    4. TypeScript
+                    
+                    Setup Environment for Angular
+                    --------------------------------------------
+                    1. Download and Install Node JS [ for NPM ]
+                            https://nodejs.org/en/download/
+                    
+                        C:\&gt; node -v
+                        C:\&gt; npm -v
+                    
+                    2. Install TypeScript
+                     
+                        C:\&gt; npm install -g typescript@latest
+                        C:\&gt; tsc -v
+                    
+                    3. Install Angular CLI  [Command Line Tool]
+                    
+                        C:\&gt; npm install -g @angular/cli@latest
+                        C:\&gt; ng version
+                    
+                    Note: Packages related details you can get from the official "npmjs.org"
+                    
+                    If you already have an older version of Angular installed in your PC:
+                    
+                    1. Un-install existing angular CLI
+                            &gt; npm uninstall  -g @angular/cli
+                    2. Run the commands
+                            &gt; npm cache clear
+                            &gt; npm cache verfiy
+                    
+                    
+                    Application Creation:
+                    ......................
+                    Create a New Angular Application
+                    1. Open You PC in exporer
+                    2. Create a new folder
+                         C:
+                          |_ AngularProjects [folder]
+                             |_shopping [sub folder]
+                    
+                    3. Change to the folder in command prompt
+                                         optional
+                       C:\Angular9Projects\shopping&gt; ng  new  [Amazon]
+                    
+                        ng  	- angular cli
+                        new 	- creating a new project
+                    
+                     What name you want for workspace... ? Amazon
+                     Would you like to add Angular routing? (y/N)  N
+                     Which stylesheet format would you like to use? CSS
+                    
+                                    "Project Created Successfully"
+                    
+                    
+                    4. Open "Shopping\Amazon" folder in Visual Studio Code
+                    
+                    5. Run the project
+                        - Open Terminal   [ Ctrl + ` ]
+                        - Type the following command
+                        &gt; ng serve
+                        - Project starts on local server with address
+                        http://localhost:4200
+                        - Open Browser and type the URL
+                        http://localhost:4200
+                    
+                      To start project directly in browser after compiling
+                        &gt; ng serve --open
+                              or
+                        &gt; ng s --o
+                    
+                    Q: How to know the library version for Angular Project?
+                    A.  Goto your Project "package.json" file and see the dependencies version
+                        
+                        "dependencies": {
+                         "@angular/core": "~9.1.1",
+                                         .................................
+                                       }
+                    
+                    Q. How to update to New Version?
+                    A. 
+                        step1 : UnInstall Pervious version CLI
+                                    &gt; npm uninstall -g @angular/cli
+                                    &gt; npm clear cache
+                                    &gt; npm cache verify
+                    
+                        step2 : Install New version CLI
+                                    &gt; npm install -g @angular/cli@latest
+                    
+                        step3 : Update to new Version
+                                    -Open You angular project in VS Code
+                                    -Open Terminal
+                             &gt; ng update @angular/core
+                    
+                    
+                    
+                     </code></pre>
+            </li>
+            <li><b>FORM VALIDATINS:</b> TDF
+                <pre class="language-js"><code>ngForm properties:
+                    ..................
+                    value:
+                    .....
+                    --&gt;It returns an object,that contains collection of control name and value.
+                    --&gt;The controls in a form are accessible by usng "value".
+                    
+                    Angular form Validations:
+                    .........................
+                    --&gt;In Angular Forms validations are handled by using a set of validation services.
+                    --&gt;The validation services are catogorized into 2 groups.
+                    1)Form state validation
+                    2)Input state validation
+                    
+                    1)Form state validation:
+                    .........................
+                    pristine:
+                    .........
+                    --&gt;It returns true when no modification detected in the form elements.[No changes detected].
+                    
+                    dirty:
+                    ......
+                    --&gt;It returns true when any one control in the form modified.[changes detected].
+                    
+                    valid:
+                    .....
+                    --&gt;It returns true when all controls in the form are valid.
+                    
+                    invalid:
+                    ........
+                    --&gt;It returns true when any one control in the form is invalid.
+                    
+                    submitted:
+                    ...........
+                    --&gt;It returns true when from is submitted.
+                    
+                    note:
+                    ......
+                    Angular uses HTML properties for validations.
+                    
+                    ex1:
+                    ....
+                    formvalidation1.component.css:
+                    ..............................
+                    .mydiv
+                    {
+                    
+                        text-align: center;
+                        background-color:mediumorchid;
+                        border: 2px dashed deeppink;
+                        border-radius: 30px;
+                        width: 700px;
+                        height: 900px;
+                        margin: auto;
+                    
+                    }
+                    
+                    table
+                    {
+                        margin: auto;
+                    }
+                    
+                    .mydiv1
+                    {
+                        margin-top: 20px;
+                    }
+                    
+                    formvalidation1.component.html:
+                    ...............................
+                    &lt;div class="mydiv"&gt;
+                    
+                    &lt;h2&gt;Register Product&lt;/h2&gt;
+                    
+                    &lt;form (submit)="RegisterClick(frmRegister.value)" #frmRegister="ngForm"&gt;
+                    
+                    &lt;table border="2"&gt;
+                    
+                    &lt;tr&gt;
+                        &lt;th&gt;Name:&lt;/th&gt;
+                    &lt;td&gt;    &lt;input type="text" name="txtName" minlength="4" maxlength="10" ngModel #txtName="ngModel"/&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                    
+                    &lt;tr&gt;
+                        &lt;th&gt;Price:&lt;/th&gt;
+                    &lt;td&gt;    &lt;input type="text" name="txtPrice" required ngModel #txtPrice="ngModel"/&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                    
+                    &lt;tr&gt;
+                        &lt;th&gt;Quantity:&lt;/th&gt;
+                    &lt;td&gt;    &lt;input type="number" name="txtQty" ngModel #txtQty="ngModel"/&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                    
+                    
+                    
+                    &lt;tr&gt;
+                        &lt;th&gt;&lt;/th&gt;
+                    &lt;td&gt;    &lt;input type="submit" [disabled]="frmRegister.invalid"  value="Register"/&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                    
+                    &lt;/table&gt;
+                    
+                    &lt;/form&gt;
+                    
+                    
+                    
+                    &lt;hr size="10" color="green"/&gt;
+                    
+                    &lt;div class="mydiv1"&gt;
+                    
+                    &lt;h2&gt;Validation Services&lt;/h2&gt;
+                    
+                    &lt;table border="1"&gt;
+                    
+                    &lt;tr&gt;
+                        &lt;th&gt;Pristine[Form Not Modified]&lt;/th&gt;
+                        &lt;td&gt;{{frmRegister.pristine}}&lt;/td&gt;
+                    &lt;/tr&gt;
+                    
+                    &lt;tr&gt;
+                        &lt;th&gt;Dirty[Form Modified]&lt;/th&gt;
+                        &lt;td&gt;{{frmRegister.dirty}}&lt;/td&gt;
+                    &lt;/tr&gt;
+                    
+                    &lt;tr&gt;
+                        &lt;th&gt;Valid&lt;/th&gt;
+                        &lt;td&gt;{{frmRegister.valid}}&lt;/td&gt;
+                    &lt;/tr&gt;
+                    
+                    &lt;tr&gt;
+                        &lt;th&gt;InValid&lt;/th&gt;
+                        &lt;td&gt;{{frmRegister.invalid}}&lt;/td&gt;
+                    &lt;/tr&gt;
+                    
+                    &lt;tr&gt;
+                        &lt;th&gt;Submitted&lt;/th&gt;
+                        &lt;td&gt;{{frmRegister.submitted}}&lt;/td&gt;
+                    &lt;/tr&gt;
+                    
+                    &lt;/table&gt;
+                    
+                    &lt;hr size="10" color="red"/&gt;
+                    
+                    &lt;pre&gt;
+                    
+                        &lt;h2&gt;Name:{{frmRegister.value.txtName}}&lt;/h2&gt;
+                    
+                        &lt;h2&gt;Price:{{frmRegister.value.txtPrice}}&lt;/h2&gt;
+                         
+                        &lt;h2&gt;Quantity:{{frmRegister.value.txtQty}}&lt;/h2&gt;
+                    
+                    &lt;/pre&gt;
+                    &lt;/div&gt;
+                    &lt;/div&gt;
+                    
+                    formvalidation1.component.ts:
+                    ..............................
+                    import { Component, OnInit } from '@angular/core';
+                    import { JsonPipe } from '@angular/common';
+                    
+                    @Component({
+                      selector: 'app-formvalidation1',
+                      templateUrl: './formvalidation1.component.html',
+                      styleUrls: ['./formvalidation1.component.css']
+                    })
+                    export class Formvalidation1Component implements OnInit {
+                    
+                      constructor() { }
+                    
+                      ngOnInit(): void {
+                      }
+                    
+                      public RegisterClick(obj):void
+                      {
+                    
+                    
+                        alert(JSON.stringify(obj));
+                    
+                    
+                      }
+                    
+                    }
+                    
+                    
+                    2)Input state validation:
+                    ..........................
+                    --&gt;These are the angular validation services used to verify every control in the form individually.
+                    --&gt;These services are accessible by using "ngModel" which is binded to form controls.
+                    
+                    property                 Description
+                    ---------              -----------------
+                    pristine           It returns true when a form element is not modified.
+                    dirty              It returns true when a form element is modified.
+                    valid              It returns true when a form element is valid.
+                    invalid            It returns true when a form element is invalid.
+                    touched            It returns true if control get focus and blured.
+                    untouched          element not touched.
+                    errors             It is used to verify specific error in control,which includes                    required,pattern,email,number,....
+                    
+                    
+                    ex:
+                    ...
+                    formvalidation2.component.css:
+                    ...............................
+                    .mydiv
+                    {
+                    
+                        text-align: center;
+                        background-color:mediumorchid;
+                        border: 2px dashed deeppink;
+                        border-radius: 30px;
+                        width: 700px;
+                        height: 900px;
+                        margin: auto;
+                    
+                    }
+                    
+                    table
+                    {
+                        margin-top: 50px;
+                        margin: auto;
+                    }
+                    
+                    
+                    formvalidation2.component.html:
+                    ...............................
+                    &lt;div class="mydiv"&gt;
+                    
+                       &lt;form (submit)="RegisterClick(frmRegister.value)" #frmRegister="ngForm"&gt;
+                    
+                    &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+                        &lt;table border="2"&gt;
+                    
+                    
+                            &lt;tr&gt;
+                                &lt;th&gt;Username:&lt;/th&gt;
+                                &lt;td&gt;
+                                    &lt;input type="text" name="txtName" ngModel #txtName="ngModel" required/&gt;
+                                    &lt;span *ngIf="txtName.touched && txtName.invalid"&gt;Username Required&lt;/span&gt;
+                    
+                                &lt;/td&gt;
+                            &lt;/tr&gt;
+                    
+                            &lt;tr&gt;
+                                &lt;th&gt;MobileNo:&lt;/th&gt;
+                                &lt;td&gt;
+                                    &lt;input type="text" name="txtMobile" ngModel #txtMobile="ngModel" required pattern="\+91[0-9]{10}"/&gt;
+                               &lt;div *ngIf="txtMobile.touched && txtMobile.invalid"&gt;
+                             &lt;span *ngIf="txtMobile.errors.required"&gt;MobileNo Required&lt;/span&gt;
+                             &lt;span *ngIf="txtMobile.errors.pattern"&gt;Invalid MobileNo&lt;/span&gt;
+                    
+                               &lt;/div&gt;
+                                &lt;/td&gt;
+                            &lt;/tr&gt;
+                             
+                    
+                            &lt;tr&gt;
+                                &lt;th&gt;&lt;/th&gt;
+                                &lt;td&gt;
+                                    &lt;input type="submit" [disabled]="frmRegister.invalid" value="Submit"/&gt;
+                    
+                                &lt;/td&gt;
+                            &lt;/tr&gt;
+                    
+                        &lt;/table&gt;
+                    
+                    
+                    
+                    
+                       &lt;/form&gt; 
+                        
+                        
+                        &lt;/div&gt;
+                    
+                    formvalidation2.component.ts:
+                    ...............................
+                    import { Component, OnInit } from '@angular/core';
+                    
+                    @Component({
+                      selector: 'app-formvalidation2',
+                      templateUrl: './formvalidation2.component.html',
+                      styleUrls: ['./formvalidation2.component.css']
+                    })
+                    export class Formvalidation2Component implements OnInit {
+                    
+                      constructor() { }
+                    
+                      ngOnInit(): void {
+                      }
+                      public RegisterClick(obj):void
+                      {
+                    
+                    
+                        alert(JSON.stringify(obj));
+                    
+                    
+                      }
+                    
+                    }
+                    
+            </code></pre>
+            </li>
+            <li><b>FORM VALIDATIONS:</b> RF
+                <pre class="language-js"><code>Dynamically apply css effects for validation:
+                    .............................................
+                    --&gt;you can define css classes for validation errors.
+                    --&gt;you can dynamically change the colors and display effects by using "ngClass".
+                    
+                    ex:
+                    ..
+                    formvalidation2.component.css:
+                    ...............................
+                    .mydiv
+                    {
+                    
+                        text-align: center;
+                        background-color:mediumorchid;
+                        border: 2px dashed deeppink;
+                        border-radius: 30px;
+                        width: 700px;
+                        height: 900px;
+                        margin: auto;
+                    
+                    }
+                    
+                    table
+                    {
+                        margin-top: 50px;
+                        margin: auto;
+                    }
+                    
+                    
+                    .valid-style
+                    {
+                    
+                        border: 2px solid green;
+                        box-shadow: 2px 2px 3px green;
+                    
+                    }
+                    
+                    .invalid-style
+                    {
+                        border: 2px solid red;
+                        box-shadow: 2px 2px 3px red;
+                    }
+                    
+                    formvalidation2.component.html:
+                    ................................
+                    &lt;div class="mydiv"&gt;
+                    
+                       &lt;form (submit)="RegisterClick(frmRegister.value)" #frmRegister="ngForm"&gt;
+                    
+                    &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+                        &lt;table border="2"&gt;
+                    
+                    
+                            &lt;tr&gt;
+                                &lt;th&gt;Username:&lt;/th&gt;
+                                &lt;td&gt;
+                                    &lt;input type="text" [ngClass]="{'valid-style':txtName.valid,'invalid-style':txtName.invalid}" name="txtName" ngModel #txtName="ngModel" required/&gt;
+                                    &lt;span *ngIf="txtName.touched && txtName.invalid"&gt;Username Required&lt;/span&gt;
+                    
+                                &lt;/td&gt;
+                            &lt;/tr&gt;
+                    
+                            &lt;tr&gt;
+                                &lt;th&gt;MobileNo:&lt;/th&gt;
+                                &lt;td&gt;
+                                    &lt;input type="text" [ngClass]="{'valid-style':txtMobile.valid,'invalid-style':txtMobile.invalid}" name="txtMobile" ngModel #txtMobile="ngModel" required pattern="\+91[0-9]{10}"/&gt;
+                               &lt;div *ngIf=" txtMobile.touched && txtMobile.invalid"&gt;
+                             &lt;span *ngIf="txtMobile.errors.required"&gt;MobileNo Required&lt;/span&gt;
+                             &lt;span *ngIf="txtMobile.errors.pattern"&gt;Invalid MobileNo&lt;/span&gt;
+                    
+                               &lt;/div&gt;
+                                &lt;/td&gt;
+                            &lt;/tr&gt;
+                             
+                    
+                            &lt;tr&gt;
+                                &lt;th&gt;&lt;/th&gt;
+                                &lt;td&gt;
+                                    &lt;input type="submit" [disabled]="frmRegister.invalid"  value="Submit"/&gt;
+                    
+                                &lt;/td&gt;
+                            &lt;/tr&gt;
+                    
+                        &lt;/table&gt;
+                    
+                    
+                    
+                    
+                       &lt;/form&gt; 
+                        
+                        
+                        &lt;/div&gt;
+                    
+                    formvalidation2.component.ts:
+                    .............................
+                    import { Component, OnInit } from '@angular/core';
+                    
+                    @Component({
+                      selector: 'app-formvalidation2',
+                      templateUrl: './formvalidation2.component.html',
+                      styleUrls: ['./formvalidation2.component.css']
+                    })
+                    export class Formvalidation2Component implements OnInit {
+                    
+                      constructor() { }
+                    
+                      ngOnInit(): void {
+                      }
+                      public RegisterClick(obj):void
+                      {
+                    
+                    
+                        alert(JSON.stringify(obj));
+                    
+                    
+                      }
+                    
+                    }
+                    ======================================================================
+                    Reactive Forms:
+                    ................
+                    --&gt;The library required for designing reactive forms "@angular/form" and "ReactiveFormsModule".
+                    
+                    
+                    creating a new form control:
+                    ............................
+                    --&gt;you can create a form control dynamically by using "FormControl" class.
+                    
+                    syntax:
+                    ........
+                    public txtName=new FormControl('');
+                    
+                    --&gt;Form control is binded with input or form elements by using property 'formControl'.
+                    syntax:
+                    ........
+                    &lt;input type='text' [formControl='txtName'/&gt;
+                    
+                    --&gt;you can access the form controls value in UI by using bibding technique {{txtName.value}}
+                    
+                    ex1:
+                    ...
+                    reactivedemo.component.css:
+                    ...........................
+                    .mydiv
+                    {
+                    
+                        text-align: center;
+                        background-color:lime;
+                        border: 2px dashed deeppink;
+                        border-radius: 30px;
+                        width: 700px;
+                        height: 900px;
+                        margin: auto;
+                    
+                    }
+                    
+                    table
+                    {
+                        margin-top: 50px;
+                        margin: auto;
+                    }
+                    
+                    
+                    reactivedemo.component.html:
+                    .............................
+                    &lt;div class="mydiv"&gt;
+                    
+                    
+                        &lt;h2&gt;Reactive Form&lt;/h2&gt;
+                    
+                        &lt;table border="2"&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;Username:&lt;/th&gt;
+                        &lt;td&gt;
+                            &lt;input type="text" [formControl]='userName'/&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                    
+                    &lt;tr&gt;
+                        &lt;th&gt;MobileNo:&lt;/th&gt;
+                       &lt;td&gt; &lt;input type="text" [formControl]='mobileNo'/&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                    
+                    
+                    &lt;tr&gt;
+                        &lt;th&gt;Courses:&lt;/th&gt;
+                        &lt;select [formControl]='courses'&gt;
+                    
+                            &lt;option&gt;Java&lt;/option&gt;
+                            &lt;option&gt;Angular&lt;/option&gt;
+                            &lt;option&gt;Django&lt;/option&gt;
+                            &lt;option&gt;Php&lt;/option&gt;
+                        &lt;/select&gt;
+                    &lt;/tr&gt;
+                    
+                    &lt;tr&gt;
+                        &lt;th&gt;&lt;/th&gt;
+                        &lt;td&gt;
+                            &lt;input type="button" (click)="updateData()" value="UpdateData"/&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                    
+                        &lt;/table&gt;
+                    
+                    &lt;hr size="10" color="red"/&gt;
+                    
+                    &lt;table&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;Username:&lt;/th&gt;
+                        &lt;td&gt;{{userName.value}}&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;MobileNo:&lt;/th&gt;
+                        &lt;td&gt;{{mobileNo.value}}&lt;/td&gt;
+                    &lt;/tr&gt;
+                    
+                    &lt;tr&gt;
+                        &lt;th&gt;Courses:&lt;/th&gt;
+                        &lt;td&gt;{{courses.value}}&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;/table&gt;
+                    &lt;/div&gt;
+                    
+                    reactivedemo.component.ts:
+                    ..........................
+                    import { Component, OnInit } from '@angular/core';
+                    import { FormControl } from '@angular/forms';
+                    @Component({
+                      selector: 'app-reactivedemo',
+                      templateUrl: './reactivedemo.component.html',
+                      styleUrls: ['./reactivedemo.component.css']
+                    })
+                    export class ReactivedemoComponent implements OnInit {
+                      constructor() { }
+                      ngOnInit(): void {
+                      }
+                      public userName=new FormControl('Mahesh');
+                      public mobileNo=new FormControl('98657845');
+                      public courses=new FormControl('Angular');
+                      public updateData()
+                      {
+                    
+                        this.userName.setValue("Kumar");
+                        this.mobileNo.setValue('876656789');
+                        this.courses.setValue('Java');
+                      }
+                    }
+                    </code></pre>
+            </li>
+            <li><b>back button:</b> browser confirm box functionality
+                <pre class="language-js"><code>import { PlatformLocation } from '@angular/common' 
+
+                    constructor(location: PlatformLocation) {
+                    
+                        location.onPopState(() => {
+                    
+                            var r = confirm("You pressed a Back button! Are you sure?!");
+                    
+                            if (r == true) {
+                                // Call Back button programmatically as per user confirmation.
+                                history.back();
+                                // Uncomment below line to redirect to the previous page instead.
+                                // window.location = document.referrer // Note: IE11 is not supporting this.
+                            } else {
+                                // Stay on the current page.
+                                history.pushState(null, null, window.location.pathname);
+                            }
+                    
+                            history.pushState(null, null, window.location.pathname);
+                        });
+                    
+                    } </code></pre>
+            </li>
+            <li><b>Git and Github:</b> commands
+                <pre class="language-js"><code>git init
+
+                    ls -lart => shows all files
+                    
+                    git add single file
+                    
+                    for all files
+                    ===============
+                    git add -A
+                    
+                    git status
+                    
+                    git commit -m m for message we can give any message
+                    
+                    for first commit
+                    ================= 
+                    press i
+                    enter Initial commit
+                    press esc 
+                    enter :wq
+                    
+                    for retreiving last commited code
+                    =====================================
+                    
+                    git checkout -f
+                    
+                    
+                    push code to github
+                    =====================
+                    git remote add origin https://github.com/vamshi-ui/second-repo.git
+                    
+                    git remote
+                    
+                    git remote -V
+                    
+                    git push origin master
+                    
+                    enter username
+                    
+                    enter password
+                     </code></pre>
+            </li>
+            <li><b>HTML Boilerplate:</b> This is the basic html boilerplate code
+                <pre class="language-js"><code>var i = 45; </code></pre>
+            </li>
+            <li><b>HTML Boilerplate:</b> This is the basic html boilerplate code
+                <pre class="language-js"><code>var i = 45; </code></pre>
+            </li>
+            <li><b>HTML Boilerplate:</b> This is the basic html boilerplate code
+                <pre class="language-js"><code>var i = 45; </code></pre>
+            </li>
+            <li><b>HTML Boilerplate:</b> This is the basic html boilerplate code
+                <pre class="language-js"><code>var i = 45; </code></pre>
+            </li>
+            <li><b>HTML Boilerplate:</b> This is the basic html boilerplate code
+                <pre class="language-js"><code>var i = 45; </code></pre>
+            </li>
+        </ol>
+    </div>
+</body>
+
+</html>
